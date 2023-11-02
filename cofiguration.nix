@@ -13,7 +13,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # boot.kernelPackages = pkgs.linux_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "kiroris"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -43,6 +43,7 @@
     description = "kirill";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
   
   # Console
@@ -55,7 +56,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  #Hyprland
+  #Hyprlandlutris
   programs.hyprland.enable = true;
 
   #xdg-desktop-portal-hyprland
@@ -114,6 +115,10 @@
     ];
   };
 
+
+  # Flatpak
+  #services.flatpak.enable = true;
+
   #mesa 
   hardware = {
     opengl = {
@@ -132,7 +137,6 @@
   };
 
   users.defaultUserShell = pkgs.zsh;
-  users.users.kirill.shell = pkgs.zsh;
 
   #swaylock
   security.pam.services.swaylock.text = ''
@@ -150,6 +154,8 @@
 
   #podman
   virtualisation.podman.enable = true;
+  #docker
+  virtualisation.docker.enable = true;
 
   #mysql
   services.mysql.enable = true;
@@ -160,68 +166,98 @@
 
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  neovim
-  wl-clipboard
-  firefox-wayland
-  waybar
-  rofi-wayland
-  swaylock-effects
-  pkgs.wineWowPackages.stagingFull
-  foot
-  git
-  libGL
+
+#PROGRAMMING
+  #Python
   (python3.withPackages (ps: with ps; [ pyqt6 dbus-python ]))
-  python311Full
-  clang
-  gcc
-  neofetch
-  telegram-desktop
-  pkgs.home-manager
-  swww
-  gamescope
-  wine
-  dunst
-  pavucontrol
-  #easyeffects
-  mesa-demos
-  zsh
-  eza
-  sway-contrib.grimshot
-  cava
-  playerctl
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  fzf
-  docker
-  lf
-  scrcpy
-  htop-vim
   python311Packages.pip
-  element-desktop
-  ntfs3g
-  obs-studio
-  tor-browser-bundle-bin
-  unzip
-  distrobox
-  fragments
-  bottles
-  zerotierone
-  appimage-run
-  temurin-jre-bin-18
-  cmatrix
-  unrar
+  python311Full
+  #Rust
   rustc
   rustup
-  podman
+  #C/C++
+  gcc
+  clang
+  #JavaScript
   nodejs
+  #Hosts server
+  hugo
+  #Database
   postgresql
-  tmux
+
+#HACKING
+  nmap
+
+#VISUAL
+  swaylock-effects
+  rofi-wayland
+  obs-studio
+  waybar
+  swww
+  dunst
+
+#PROGRAMS
+  tor-browser-bundle-bin
+  telegram-desktop
+  firefox-wayland
+  element-desktop
+  protonvpn-gui
+  pavucontrol
+  fragments
+  qpwgraph
+  scrcpy
+
+#UTILS
+  # NixOS
+  pkgs.wineWowPackages.stagingFull
+  pkgs.home-manager
+  # Zsh
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  # Outher
+  sway-contrib.grimshot
+  temurin-jre-bin-18
+  wl-clipboard
+  mesa-demos
+  libnotify
+  ntfs3g
+  libGL
+  file
+
+
+#CONSOLE UTILS
+  appimage-run
+  zerotierone
+  playerctl
+  gamescope
+  steam-run
+  distrobox
+  newsboat
+  neofetch
+  htop-vim
+  cmatrix
+  du-dust
+  neovim
+  unzip
+  unrar
+  wine
+  cava
+  foot
+  mksh
+  git
   mpv
   imv
-  hugo
-  piper
+  zsh
+  eza
+  fzf
+  lf
  ];
 
+  # Enable openVPN
+  services.openvpn.servers = {
+    lab_kirorisVPN  = { config = '' config /etc/nixos/starting_point_kiroris.ovpn ''; };
+  };
+  
   # Enable the OpenSSH daemon.
    services.openssh.enable = true;
 
