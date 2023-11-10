@@ -144,6 +144,7 @@
     # the 'login' configuration file (see /etc/pam.d/login)
     auth include login
   '';
+  
 
   # ADB  
   programs.adb.enable = true;
@@ -191,20 +192,25 @@
 #VISUAL
   swaylock-effects
   rofi-wayland
+  eww-wayland
   obs-studio
   waybar
+  tty-clock
   swww
   dunst
 
 #PROGRAMS
+  pkgs.notion-app-enhanced
   tor-browser-bundle-bin
   telegram-desktop
   firefox-wayland
   element-desktop
   protonvpn-gui
+  spicetify-cli
   pavucontrol
   fragments
   qpwgraph
+  bottles
   scrcpy
 
 #UTILS
@@ -224,6 +230,12 @@
   libGL
   file
 
+
+#STANDART
+  swayidle
+  pamixer
+  light
+  acpi
 
 #CONSOLE UTILS
   appimage-run
