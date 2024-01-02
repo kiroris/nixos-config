@@ -41,11 +41,21 @@
   users.users.kirill = {
     isNormalUser = true;
     description = "kirill";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers"];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
-  
+
+  # Shell
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
+    enableCompletion = true;
+  };  
+  users.defaultUserShell = pkgs.zsh;
+
   # Console
   console = {
     font = "Lat2-Terminus16";
@@ -53,13 +63,19 @@
     # useXkbConfig = true; # use xkbOptions in tty.
   };
 
+  # Tmux
+  programs.tmux = {
+  enable = true;
+  clock24 = true;
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  #Hyprlandlutris
+  # Hyprlandlutris
   programs.hyprland.enable = true;
 
-  #xdg-desktop-portal-hyprland
+  # Xdg-desktop-portal-hyprland
   xdg.portal = {
   enable = true;
   extraPortals = with pkgs; [
@@ -69,7 +85,7 @@
   gtkUsePortal = true;
   };
 
-  #Enable sound with pipewire
+  # Enable sound with pipewire
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -81,13 +97,7 @@
 	jack.enable = true;
   };
 
-  #steam
-  programs.steam.enable = true;
-
-  # Bluetooth
-  hardware.bluetooth.enable = true;   
-  
-  #nix
+  # Nix
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -103,8 +113,7 @@
     };
   };
 
-
-  #Fonts
+  # Fonts
   fonts = {
     packages = with pkgs; [
       font-awesome
@@ -115,11 +124,7 @@
     ];
   };
 
-
-  # Flatpak
-  #services.flatpak.enable = true;
-
-  #mesa 
+  # Mesa 
   hardware = {
     opengl = {
       enable = true;
@@ -127,91 +132,134 @@
     };
   };
 
-  #Shell
-  programs.zsh = {
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.1.1v"
+  ];
+  
+# Gvfs
+  services.gvfs = {
     enable = true;
-    enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
-    syntaxHighlighting.enable = true;
-    enableCompletion = true;
   };
 
-  users.defaultUserShell = pkgs.zsh;
+  # Steam
+  programs.steam.enable = true;
 
-  #swaylock
+  # Bluetooth
+  hardware.bluetooth.enable = true;   
+
+  # Flatpak
+  #services.flatpak.enable = true;
+
+  # ADB  
+  programs.adb.enable = true; 
+
+  # Podman
+  virtualisation.podman.enable = true;
+
+  # Docker
+  virtualisation.docker.enable = true;
+
+  # PostgreSQL
+  services.postgresql.enable = true;
+
+  # Swaylock
   security.pam.services.swaylock.text = ''
     # PAM configuration file for the swaylock screen locker. By default, it includes
     # the 'login' configuration file (see /etc/pam.d/login)
     auth include login
   '';
   
-
-  # ADB  
-  programs.adb.enable = true;
- 
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.1.1v"
-  ];
-
-  #podman
-  virtualisation.podman.enable = true;
-  #docker
-  virtualisation.docker.enable = true;
-
-  #mysql
-  services.mysql.enable = true;
-  services.mysql.package = pkgs.mariadb;
-
-  #postgresql
-  services.postgresql.enable = true;
-
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
 #PROGRAMMING
-  #Python
-  (python3.withPackages (ps: with ps; [ pyqt6 dbus-python ]))
+  # Editors
+  neovim
+  vscode
+  # Python
+  (python3.withPackages (ps: with ps; [ pyqt6 ]))
   python311Packages.pip
   python311Full
-  #Rust
+  # Java
+  temurin-jre-bin-18
+  # Rust
   rustc
+  cargo
   rustup
-  #C/C++
+  # C/C++
   gcc
   clang
-  #JavaScript
-  nodejs
-  #Hosts server
-  hugo
-  #Database
+  # Database
+  pgadmin4-desktopmode
   postgresql
+  # Hosts
+  hugo
+  # Git 
+  git
 
 #HACKING
+  inetutils
+  radare2
+  iaito
   nmap
+
+
+#ZIPS
+  unzip
+  unrar
+  p7zip
+
 
 #VISUAL
   swaylock-effects
   rofi-wayland
   eww-wayland
-  obs-studio
   waybar
-  tty-clock
-  swww
   dunst
+  swww
+
 
 #PROGRAMS
-  pkgs.notion-app-enhanced
   tor-browser-bundle-bin
   telegram-desktop
   firefox-wayland
   element-desktop
-  protonvpn-gui
-  spicetify-cli
+  gnome.nautilus
   pavucontrol
+  obs-studio
+  winetricks
   fragments
   qpwgraph
+  appflowy
   bottles
+  spotify
   scrcpy
+  heroic
+  foot
+  mpv
+  imv
+
+
+#CLI UTILS
+  shadowsocks-rust
+  playerctl
+  tty-clock
+  swayidle
+  neofetch
+  htop-vim
+  cmatrix
+  du-dust
+  pamixer
+  light
+  btop
+  cava
+  acpi
+  zsh
+  duf
+  eza
+  fzf
+  lf
+  
 
 #UTILS
   # NixOS
@@ -221,60 +269,45 @@
   zsh-syntax-highlighting
   zsh-autosuggestions
   # Outher
+  pkgs.android-udev-rules
   sway-contrib.grimshot
-  temurin-jre-bin-18
+  pkgs.cifs-utils
   wl-clipboard
   mesa-demos
   libnotify
   ntfs3g
   libGL
   file
+  wine
 
 
-#STANDART
-  swayidle
-  pamixer
-  light
-  acpi
-
-#CONSOLE UTILS
+#OTHER
   appimage-run
   zerotierone
-  playerctl
+  mesa-demos
   gamescope
   steam-run
   distrobox
-  newsboat
-  neofetch
-  htop-vim
-  cmatrix
-  du-dust
-  neovim
-  unzip
-  unrar
-  wine
-  cava
-  foot
-  mksh
-  git
-  mpv
-  imv
-  zsh
-  eza
-  fzf
-  lf
- ];
+  qemu_full
+  mangohud
+  gamemode
+
+
+  ];
 
   # Enable openVPN
   services.openvpn.servers = {
-    lab_kirorisVPN  = { config = '' config /etc/nixos/starting_point_kiroris.ovpn ''; };
+    labVPN  = { config = '' config /etc/nixos/starting_point_kiroris.ovpn ''; };
   };
   
   # Enable the OpenSSH daemon.
-   services.openssh.enable = true;
+  services.openssh.enable = true;
+
+  #zerotierone
+  services.zerotierone.enable = true;
 
   # Open ports in the firewall.
-   networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
