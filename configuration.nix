@@ -136,9 +136,18 @@
     "openssl-1.1.1v"
   ];
   
-# Gvfs
+  # Gvfs
   services.gvfs = {
     enable = true;
+  };
+  
+  # Tor 
+  services.tor.enable = true;
+  services.tor.client.enable = true;
+  services.tor.settings = {
+      UseBridges = true;
+      ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/obfs4proxy";
+      Bridge = "obfs4 IP:ORPort [fingerprint]";
   };
 
   # Steam
@@ -186,9 +195,12 @@
   rustc
   cargo
   rustup
+  # Go 
+  go
   # C/C++
-  gcc
+  gnumake
   clang
+  gcc
   # Database
   pgadmin4-desktopmode
   postgresql
@@ -202,6 +214,7 @@
   radare2
   iaito
   nmap
+  lsof
 
 
 #ZIPS
@@ -220,7 +233,6 @@
 
 
 #PROGRAMS
-  tor-browser-bundle-bin
   telegram-desktop
   firefox-wayland
   element-desktop
@@ -291,6 +303,17 @@
   qemu_full
   mangohud
   gamemode
+
+
+
+  ffmpeg_5-full
+  ungoogled-chromium
+  librewolf
+  zathura
+  xdg-utils
+  
+  shotcut
+  davinci-resolve
 
 
   ];
