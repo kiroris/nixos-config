@@ -129,6 +129,9 @@
     opengl = {
       enable = true;
       driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        rocmPackages.clr.icd
+      ];
     };
   };
 
@@ -157,16 +160,30 @@
   hardware.bluetooth.enable = true;   
 
   # Flatpak
-  #services.flatpak.enable = true;
+  services.flatpak.enable = true;
 
   # ADB  
   programs.adb.enable = true; 
 
   # Podman
-  virtualisation.podman.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+
+
+    };
+  };
+
+  defaultNetwork.settings.dns_enabled = true;
 
   # Docker
   virtualisation.docker.enable = true;
+
+  # waydroid
+  virtualisation.waydroid.enable = true;
 
   # PostgreSQL
   services.postgresql.enable = true;
@@ -242,7 +259,6 @@
   winetricks
   fragments
   qpwgraph
-  appflowy
   bottles
   spotify
   scrcpy
@@ -312,17 +328,29 @@
   zathura
   xdg-utils
   
-  shotcut
-  davinci-resolve
-
+  #shotcut
+  xray
+  #libsForQt5.kdenlive
+  anytype
+  fluffychat
+  libsForQt5.neochat
+  fractal
+  nheko
+  gomuks
+  #olive-editor
+  #piper
+  gimp
+  libsForQt5.kdenlive
+  transmission
+  #vmware-workstation
 
   ];
 
   # Enable openVPN
-  services.openvpn.servers = {
-    labVPN  = { config = '' config /etc/nixos/starting_point_kiroris.ovpn ''; };
-  };
-  
+#  services.openvpn.servers = {
+#    labVPN  = { config = '' config /etc/nixos/starting_point_kiroris.ovpn ''; };
+#  };
+#  
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 

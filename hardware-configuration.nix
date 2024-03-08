@@ -15,13 +15,13 @@
   boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/eac57f94-902d-4338-aa0f-236c32b263bc";
+    { device = "/dev/disk/by-uuid/c603dd0e-0008-4721-85ed-7e7c8be2ccf2";
       fsType = "btrfs";
       options = [ "subvol=@" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3D8C-6FAA";
+    { device = "/dev/disk/by-uuid/066B-DFFA";
       fsType = "vfat";
     };
   
