@@ -75,15 +75,15 @@
   # Hyprlandlutris
   programs.hyprland.enable = true;
 
-  # Xdg-desktop-portal-hyprland
-  xdg.portal = {
-  enable = true;
-  extraPortals = with pkgs; [
-  xdg-desktop-portal-hyprland
-  xdg-desktop-portal-gtk
-  ];
-  gtkUsePortal = true;
-  };
+  ## Xdg-desktop-portal-hyprland
+  #xdg.portal = {
+  #enable = true;
+  #extraPortals = with pkgs; [
+  #xdg-desktop-portal-hyprland
+  #xdg-desktop-portal-gtk
+  #];
+  #gtkUsePortal = true;
+  #};
 
   ## Enable sound with pipewire
   #sound.enable = true;
@@ -163,7 +163,7 @@
   #services.flatpak.enable = true;
 
   # ADB  
-  programs.adb.enable = true; 
+  #programs.adb.enable = true; 
 
   # Podman
   virtualisation = {
@@ -195,7 +195,7 @@
   #  settingsFile = /home/kirill/.config/xray/xray.json;
   #};
 
-  programs.wireshark.enable = true;
+  #programs.wireshark.enable = true;
 
 
   # Swaylock
@@ -288,7 +288,7 @@
   cmatrix
   du-dust
   pamixer
-  light
+  #light
   btop
   cava
   acpi

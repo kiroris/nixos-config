@@ -199,13 +199,78 @@
   };
 
 
+# ██╗  ██╗██████╗  ██████╗       ██████╗  ██████╗ ██████╗ ████████╗ █████╗ ██╗     
+# ╚██╗██╔╝██╔══██╗██╔════╝       ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔══██╗██║     
+#  ╚███╔╝ ██║  ██║██║  ███╗█████╗██████╔╝██║   ██║██████╔╝   ██║   ███████║██║     
+#  ██╔██╗ ██║  ██║██║   ██║╚════╝██╔═══╝ ██║   ██║██╔══██╗   ██║   ██╔══██║██║     
+# ██╔╝ ██╗██████╔╝╚██████╔╝      ██║     ╚██████╔╝██║  ██║   ██║   ██║  ██║███████╗
+# ╚═╝  ╚═╝╚═════╝  ╚═════╝       ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
+# xdg-portal needed for screen sharhing, file choosing, etc.
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+    # gtk portal needed to make gtk apps happy
+    gtkUsePortal = true;
+  };
+
+
+# ███████╗███████╗ ██████╗██╗   ██╗██████╗ ██╗████████╗██╗   ██╗
+# ██╔════╝██╔════╝██╔════╝██║   ██║██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝
+# ███████╗█████╗  ██║     ██║   ██║██████╔╝██║   ██║    ╚████╔╝ 
+# ╚════██║██╔══╝  ██║     ██║   ██║██╔══██╗██║   ██║     ╚██╔╝  
+# ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║   
+# ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
+# tsss...be quiet
+  security = {
+    # Sudo enable.
+    sudo.enable = true;
+
+    # Needed for PipeWire
+    rtkit.enable = true;
+
+    # Polkit enable.
+    polkit.enable = true;
+
+    # Fix swaylock.
+    # Pick one of the below fix swaylock options.
+    # First method has not been tested.
+    #pam.services.swaylock = { };
+    # I use the second method.
+    pam.services.swaylock.text = ''
+      # PAM configuration file for the swaylock screen locker. By default, it includes
+      # the 'login' configuration file (see /etc/pam.d/login)
+      auth include login
+    '';
+  };
+
+
 # ██████╗ ██████╗  ██████╗  ██████╗ ██████╗  █████╗ ███╗   ███╗███████╗
 # ██╔══██╗██╔══██╗██╔═══██╗██╔════╝ ██╔══██╗██╔══██╗████╗ ████║██╔════╝
 # ██████╔╝██████╔╝██║   ██║██║  ███╗██████╔╝███████║██╔████╔██║███████╗
 # ██╔═══╝ ██╔══██╗██║   ██║██║   ██║██╔══██╗██╔══██║██║╚██╔╝██║╚════██║
 # ██║     ██║  ██║╚██████╔╝╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║███████║
 # ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+  programs = {
 
+    mtr.enable = true;
+
+    light.enable = true;
+
+    # dconf enable.
+    dconf.enable = true;
+    
+    # KDEconnect enable.
+    kdeconnect.enable = false;
+
+    # ADB enable.
+    adb.enable = false;
+    
+    # 
+    wireshark.enable = true;
+  };
 
 
 
