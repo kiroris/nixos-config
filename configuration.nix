@@ -173,20 +173,28 @@
       # Create a `docker` alias for podman, to use it as a drop-in replacement
       dockerCompat = true;
 
-
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
     };
   };
 
-  defaultNetwork.settings.dns_enabled = true;
-
   # Docker
-  virtualisation.docker.enable = true;
+  #virtualisation.docker.enable = true;
 
   # waydroid
   virtualisation.waydroid.enable = true;
 
   # PostgreSQL
   services.postgresql.enable = true;
+
+  environment.variables.EDITOR = "nvim";
+
+  # xray
+  services.xray = {
+    enable = true;
+    settingsFile = /home/kirill/.config/xray/xray.json;
+  };
+
 
   # Swaylock
   security.pam.services.swaylock.text = ''
@@ -201,7 +209,7 @@
 #PROGRAMMING
   # Editors
   neovim
-  vscode
+  #vscode
   # Python
   (python3.withPackages (ps: with ps; [ pyqt6 ]))
   python311Packages.pip
@@ -330,7 +338,7 @@
   
   #shotcut
   xray
-  #libsForQt5.kdenlive
+  libsForQt5.kdenlive
   anytype
   fluffychat
   libsForQt5.neochat
@@ -343,6 +351,7 @@
   libsForQt5.kdenlive
   transmission
   #vmware-workstation
+  podman-compose
 
   ];
 
