@@ -1,20 +1,56 @@
 {
-  description = "A simple NixOS flake";
-
   inputs = {
-    # NixOS official package source, using the nixos-23.11 branch here
+    
+    # Nixpkgs
+    #nixpkgs.url = "nixpkgs/nixos-unstable";
+    #nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+
+    # Home Manager
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Nix-Vim
+    nixvim.url = "github:nix-community/nixvim";
+
+    # Age-Nix
+    agenix.url = "github:ryantm/agenix";
+
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    # Please replace my-nixos with your hostname
-    nixosConfigurations.kiroris = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./configuration.nix
-      ];
-    };
+  outputs = { self, nixpkgs, nixvim, agenix, ... }@inputs: {
+    nixosConfigurations =
+      let
+        makeNixosConfiguration = name: modules: nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ({ ... }: { networking.hostName = name; })
+            ./system
+          ] ++ modules;
+        };
+      in      
+      {
+        fallback = makeNixosConfiguration "fallback-hostname" [ ];
+
+        wisteria = makeNixosConfiguration "wisteria" [
+          ./configuration.nix
+        ];
+
+        lycoris = makeNixosConfiguration "lycoris" [
+          ./configuration.nix
+        ];
+      };
+
+#    homeConfigurations =
+
+
+
+
+
+
+
   };
 }

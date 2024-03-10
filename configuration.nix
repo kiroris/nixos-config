@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "kiroris"; # Define your hostname.
+  #networking.hostName = "kiroris"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -25,11 +25,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Minsk";
+  ## Set your time zone.
+  #time.timeZone = "Europe/Minsk";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  ## Select internationalisation properties.
+  #i18n.defaultLocale = "en_US.UTF-8";
 
   # Configure keymap in X11
   services.xserver = {
@@ -38,13 +38,13 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.kirill = {
-    isNormalUser = true;
-    description = "kirill";
-    extraGroups = [ "networkmanager" "wheel" "adbusers"];
-    packages = with pkgs; [];
-    shell = pkgs.zsh;
-  };
+  #users.users.kirill = {
+  #  isNormalUser = true;
+  #  description = "kirill";
+  #  extraGroups = [ "networkmanager" "wheel" "adbusers"];
+  #  packages = with pkgs; [];
+  #  shell = pkgs.zsh;
+  #};
 
   # Shell
   programs.zsh = {
@@ -56,12 +56,12 @@
   };  
   users.defaultUserShell = pkgs.zsh;
 
-  # Console
-  console = {
-    font = "Lat2-Terminus16";
-    # keyMap = "us";
-    # useXkbConfig = true; # use xkbOptions in tty.
-  };
+  ## Console
+  #console = {
+  #  font = "Lat2-Terminus16";
+  #  # keyMap = "us";
+  #  # useXkbConfig = true; # use xkbOptions in tty.
+  #};
 
   # Tmux
   programs.tmux = {
@@ -85,33 +85,33 @@
   gtkUsePortal = true;
   };
 
-  # Enable sound with pipewire
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-	enable = true;
-	alsa.enable = true;
-	alsa.support32Bit = true;
-	pulse.enable = true;
-	jack.enable = true;
-  };
+  ## Enable sound with pipewire
+  #sound.enable = true;
+  #hardware.pulseaudio.enable = false;
+  #security.rtkit.enable = true;
+  #services.pipewire = {
+	#enable = true;
+	#alsa.enable = true;
+	#alsa.support32Bit = true;
+	#pulse.enable = true;
+	#jack.enable = true;
+  #};
 
-  # Nix
-  nix = {
-    settings = {
-      experimental-features = ["nix-command" "flakes"];
-      auto-optimise-store = true;
-    };
-    optimise = {
-      dates = ["weekly"];
-      automatic = true;
-    };
-    gc = {
-      dates = "weekly";
-      automatic = true;
-    };
-  };
+  ## Nix
+  #nix = {
+  #  settings = {
+  #    experimental-features = ["nix-command" "flakes"];
+  #    auto-optimise-store = true;
+  #  };
+  #  optimise = {
+  #    dates = ["weekly"];
+  #    automatic = true;
+  #  };
+  #  gc = {
+  #    dates = "weekly";
+  #    automatic = true;
+  #  };
+  #};
 
   # Fonts
   fonts = {
@@ -124,16 +124,16 @@
     ];
   };
 
-  # Mesa 
-  hardware = {
-    opengl = {
-      enable = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        rocmPackages.clr.icd
-      ];
-    };
-  };
+  ## Mesa 
+  #hardware = {
+  #  opengl = {
+  #    enable = true;
+  #    driSupport32Bit = true;
+  #    extraPackages = with pkgs; [
+  #      rocmPackages.clr.icd
+  #    ];
+  #  };
+  #};
 
   nixpkgs.config.permittedInsecurePackages = [
     "openssl-1.1.1v"
@@ -185,15 +185,17 @@
   virtualisation.waydroid.enable = true;
 
   # PostgreSQL
-  services.postgresql.enable = true;
+  #services.postgresql.enable = true;
 
   environment.variables.EDITOR = "nvim";
 
   # xray
-  services.xray = {
-    enable = true;
-    settingsFile = /home/kirill/.config/xray/xray.json;
-  };
+  #services.xray = {
+  #  enable = true;
+  #  settingsFile = /home/kirill/.config/xray/xray.json;
+  #};
+
+  programs.wireshark.enable = true;
 
 
   # Swaylock
@@ -361,13 +363,13 @@
 #  };
 #  
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  #services.openssh.enable = true;
 
   #zerotierone
-  services.zerotierone.enable = true;
+  #services.zerotierone.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.enable = false;
+  #networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
