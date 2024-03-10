@@ -11,9 +11,9 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
 
   #networking.hostName = "kiroris"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -32,10 +32,10 @@
   #i18n.defaultLocale = "en_US.UTF-8";
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
+  #services.xserver = {
+  #  layout = "us";
+  #  xkbVariant = "";
+  #};
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   #users.users.kirill = {
@@ -140,9 +140,9 @@
   ];
   
   # Gvfs
-  services.gvfs = {
-    enable = true;
-  };
+  #services.gvfs = {
+  #  enable = true;
+  #};
   
   # Tor 
   services.tor.enable = true;
@@ -160,7 +160,7 @@
   hardware.bluetooth.enable = true;   
 
   # Flatpak
-  services.flatpak.enable = true;
+  #services.flatpak.enable = true;
 
   # ADB  
   programs.adb.enable = true; 
