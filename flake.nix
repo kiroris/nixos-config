@@ -18,9 +18,15 @@
     # Age-Nix
     agenix.url = "github:ryantm/agenix";
 
+    # Nix-Index-db
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, nixvim, agenix, ... }@inputs: {
+  outputs = { self, nixpkgs, nixvim, agenix, nix-index-database, ... }@inputs: {
     nixosConfigurations =
       let
         makeNixosConfiguration = name: modules: nixpkgs.lib.nixosSystem {
@@ -36,6 +42,7 @@
         fallback = makeNixosConfiguration "fallback-hostname" [ ];
 
         wisteria = makeNixosConfiguration "wisteria" [
+          ./system/wisteria
           ./configuration.nix
         ];
 
