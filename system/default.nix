@@ -1,5 +1,6 @@
 { lib, pkgs, inputs, ... }: {
 
+
 # ███╗   ██╗██╗██╗  ██╗
 # ████╗  ██║██║╚██╗██╔╝
 # ██╔██╗ ██║██║ ╚███╔╝ 
@@ -30,7 +31,6 @@
       options = "--delete-older-than 30d";
     };
   };
-
 
 
 # ██████╗  ██████╗  ██████╗ ████████╗
@@ -107,9 +107,12 @@
 # ███████║╚██████╔╝╚██████╔╝██║ ╚████║██████╔╝
 # ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═════╝ 
   sound.enable = true;
-  # Disable pulseaudio.
-  hardware.pulseaudio.enable = false;
-  #security.rtkit.enable = true;
+  hardware = {
+    # Enable Bluetooth.
+    bluetooth.enable = true;
+    # Disable pulseaudio.
+    pulseaudio.enable = false;
+  };
 
 
 #  ██████╗ ██████╗ ███████╗███╗   ██╗ ██████╗ ██╗     
@@ -199,24 +202,6 @@
   };
 
 
-# ██╗  ██╗██████╗  ██████╗       ██████╗  ██████╗ ██████╗ ████████╗ █████╗ ██╗     
-# ╚██╗██╔╝██╔══██╗██╔════╝       ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔══██╗██║     
-#  ╚███╔╝ ██║  ██║██║  ███╗█████╗██████╔╝██║   ██║██████╔╝   ██║   ███████║██║     
-#  ██╔██╗ ██║  ██║██║   ██║╚════╝██╔═══╝ ██║   ██║██╔══██╗   ██║   ██╔══██║██║     
-# ██╔╝ ██╗██████╔╝╚██████╔╝      ██║     ╚██████╔╝██║  ██║   ██║   ██║  ██║███████╗
-# ╚═╝  ╚═╝╚═════╝  ╚═════╝       ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
-# xdg-portal needed for screen sharhing, file choosing, etc.
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
-    ];
-    # gtk portal needed to make gtk apps happy
-    gtkUsePortal = true;
-  };
-
-
 # ███████╗███████╗ ██████╗██╗   ██╗██████╗ ██╗████████╗██╗   ██╗
 # ██╔════╝██╔════╝██╔════╝██║   ██║██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝
 # ███████╗█████╗  ██║     ██║   ██║██████╔╝██║   ██║    ╚████╔╝ 
@@ -236,9 +221,9 @@
 
     # Fix swaylock.
     # Pick one of the below fix swaylock options.
-    # First method has not been tested.
+      # > First method has not been tested.
     #pam.services.swaylock = { };
-    # I use the second method.
+      # > I use the second method.
     pam.services.swaylock.text = ''
       # PAM configuration file for the swaylock screen locker. By default, it includes
       # the 'login' configuration file (see /etc/pam.d/login)
@@ -254,41 +239,82 @@
 # ██║     ██║  ██║╚██████╔╝╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║███████║
 # ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
   programs = {
-
+    # MTR enable.
     mtr.enable = true;
-
-    light.enable = true;
-
-    # dconf enable.
-    dconf.enable = true;
-    
-    # KDEconnect enable.
-    kdeconnect.enable = false;
 
     # ADB enable.
     adb.enable = false;
     
-    # 
+    # Light enable.
+    light.enable = true;
+
+    # Dconf enable.
+    dconf.enable = true;
+
+    # Steam enable.
+    steam.enable = true;
+
+    # WireShark enable.
     wireshark.enable = true;
+
+    # KDEconnect enable.
+    kdeconnect.enable = false;
   };
 
 
+# ██╗  ██╗██████╗  ██████╗       ██████╗  ██████╗ ██████╗ ████████╗ █████╗ ██╗     
+# ╚██╗██╔╝██╔══██╗██╔════╝       ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔══██╗██║     
+#  ╚███╔╝ ██║  ██║██║  ███╗█████╗██████╔╝██║   ██║██████╔╝   ██║   ███████║██║     
+#  ██╔██╗ ██║  ██║██║   ██║╚════╝██╔═══╝ ██║   ██║██╔══██╗   ██║   ██╔══██║██║     
+# ██╔╝ ██╗██████╔╝╚██████╔╝      ██║     ╚██████╔╝██║  ██║   ██║   ██║  ██║███████╗
+# ╚═╝  ╚═╝╚═════╝  ╚═════╝       ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
+# xdg-portal needed for screen sharhing, file choosing, etc.
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+    # gtk portal needed to make gtk apps happy
+    gtkUsePortal = true;
+  };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# ██╗   ██╗██╗██████╗ ████████╗██╗   ██╗ █████╗ ██╗     ██╗███████╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗
+# ██║   ██║██║██╔══██╗╚══██╔══╝██║   ██║██╔══██╗██║     ██║██╔════╝██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
+# ██║   ██║██║██████╔╝   ██║   ██║   ██║███████║██║     ██║███████╗███████║   ██║   ██║██║   ██║██╔██╗ ██║
+# ╚██╗ ██╔╝██║██╔══██╗   ██║   ██║   ██║██╔══██║██║     ██║╚════██║██╔══██║   ██║   ██║██║   ██║██║╚██╗██║
+#  ╚████╔╝ ██║██║  ██║   ██║   ╚██████╔╝██║  ██║███████╗██║███████║██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║
+#   ╚═══╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+# Configuring Containers
+  virtualisation = {
+    # Docker 
+    docker = {
+      enable = false;
+      storageDriver = "btrfs";
+      rootless = {
+        setSocketVariable = true;
+        # Sets the DOCKER_HOST variable to the rootless Docker instance for normal users by default. 
+      };
+    };
+    # Podman
+    podman = {
+      enable = true;
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+    # Arion
+    #arion = {
+    #backend = "docker";
+    #backend = "podman";
+    #projects = {
+    #"db".settings.services."db".service = {
+    #  image = "";
+    #  restart = "unless-stopped";
+    #  environment = { POSTGRESS_PASSWORD = "password"; };
+    #
+    #};
+  };
 }

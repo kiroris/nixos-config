@@ -23,7 +23,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  #networking.networkmanager.enable = true;
 
   ## Set your time zone.
   #time.timeZone = "Europe/Minsk";
@@ -154,10 +154,10 @@
   };
 
   # Steam
-  programs.steam.enable = true;
+  #programs.steam.enable = true;
 
   # Bluetooth
-  hardware.bluetooth.enable = true;   
+  #hardware.bluetooth.enable = true;   
 
   # Flatpak
   #services.flatpak.enable = true;
@@ -199,11 +199,11 @@
 
 
   # Swaylock
-  security.pam.services.swaylock.text = ''
-    # PAM configuration file for the swaylock screen locker. By default, it includes
-    # the 'login' configuration file (see /etc/pam.d/login)
-    auth include login
-  '';
+  #security.pam.services.swaylock.text = ''
+  #  # PAM configuration file for the swaylock screen locker. By default, it includes
+  #  # the 'login' configuration file (see /etc/pam.d/login)
+  #  auth include login
+  #'';
   
   # $ nix search wget
   environment.systemPackages = with pkgs; [
