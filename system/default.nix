@@ -100,6 +100,23 @@
   };
 
 
+# ███████╗ ██████╗ ███╗   ██╗████████╗███████╗
+# ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝
+# █████╗  ██║   ██║██╔██╗ ██║   ██║   ███████╗
+# ██╔══╝  ██║   ██║██║╚██╗██║   ██║   ╚════██║
+# ██║     ╚██████╔╝██║ ╚████║   ██║   ███████║
+# ╚═╝      ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝
+  fonts = {
+    packages = with pkgs; [
+      font-awesome
+      dejavu_fonts
+      fira-code
+      fira-code-symbols
+      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"]; })
+    ];
+  };
+
+
 #  ██████╗ ██████╗ ███████╗███╗   ██╗ ██████╗ ██╗     
 # ██╔═══██╗██╔══██╗██╔════╝████╗  ██║██╔════╝ ██║     
 # ██║   ██║██████╔╝█████╗  ██╔██╗ ██║██║  ███╗██║     
@@ -223,7 +240,6 @@
 # ██╔═══╝ ██╔══██║██║     ██╔═██╗ ██╔══██║██║   ██║██╔══╝  ╚════██║
 # ██║     ██║  ██║╚██████╗██║  ██╗██║  ██║╚██████╔╝███████╗███████║
 # ╚═╝     ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝
-# 
   environment.defaultPackages = [ ];
   environment.systemPackages = with pkgs; [
     # system
@@ -274,7 +290,7 @@
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
     ];
-    # gtk portal needed to make gtk apps happy
+    # GTK portal needed to make gtk apps happy.
     gtkUsePortal = true;
   };
 

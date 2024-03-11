@@ -114,15 +114,15 @@
   #};
 
   # Fonts
-  fonts = {
-    packages = with pkgs; [
-      font-awesome
-      dejavu_fonts
-      fira-code
-      fira-code-symbols
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"]; })
-    ];
-  };
+  #fonts = {
+  #  packages = with pkgs; [
+  #    font-awesome
+  #    dejavu_fonts
+  #    fira-code
+  #    fira-code-symbols
+  #    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"]; })
+  #  ];
+  #};
 
   ## Mesa 
   #hardware = {
@@ -166,23 +166,23 @@
   #programs.adb.enable = true; 
 
   # Podman
-  virtualisation = {
-    podman = {
-      enable = true;
+  #virtualisation = {
+  #  podman = {
+  #    enable = true;
 
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = true;
+  #    # Create a `docker` alias for podman, to use it as a drop-in replacement
+  #    dockerCompat = true;
 
-      # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
+  #    # Required for containers under podman-compose to be able to talk to each other.
+  #    defaultNetwork.settings.dns_enabled = true;
+  #  };
+  #};
 
   # Docker
   #virtualisation.docker.enable = true;
 
   # waydroid
-  virtualisation.waydroid.enable = true;
+  #virtualisation.waydroid.enable = true;
 
   # PostgreSQL
   #services.postgresql.enable = true;
@@ -377,6 +377,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  #system.stateVersion = "23.05"; # Did you read the comment?
 
 }

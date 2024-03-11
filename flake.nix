@@ -47,7 +47,7 @@
         ];
 
         lycoris = makeNixosConfiguration "lycoris" [
-          ./configuration.nix
+          #./configuration.nix
         ];
       };
 
