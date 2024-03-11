@@ -17,7 +17,7 @@
 
     initExtra = ''
     Hyprland
-    ''
+    '';
 
   };
 }
