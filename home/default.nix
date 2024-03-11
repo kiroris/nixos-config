@@ -1,4 +1,5 @@
 { pkgs, config, ... }: {
+  programs.home-manager.enable = true;
 
 # ██╗  ██╗ ██████╗ ███╗   ███╗███████╗    ███╗   ███╗ █████╗ ███╗   ██╗ █████╗  ██████╗ ███████╗██████╗ 
 # ██║  ██║██╔═══██╗████╗ ████║██╔════╝    ████╗ ████║██╔══██╗████╗  ██║██╔══██╗██╔════╝ ██╔════╝██╔══██╗
@@ -6,17 +7,14 @@
 # ██╔══██║██║   ██║██║╚██╔╝██║██╔══╝╚════╝██║╚██╔╝██║██╔══██║██║╚██╗██║██╔══██║██║   ██║██╔══╝  ██╔══██╗
 # ██║  ██║╚██████╔╝██║ ╚═╝ ██║███████╗    ██║ ╚═╝ ██║██║  ██║██║ ╚████║██║  ██║╚██████╔╝███████╗██║  ██║
 # ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
-  programs.home-manager.enable = true;
-
   imports = [
-    
+    ./git
   ];
 
 
   home = {
     username = "kirill";
     homeDirectory = "/home/kirill";
-
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
@@ -45,17 +43,17 @@
 
 
 
-  programs.git = {
-    enable = true;
-    userName = "kiroris";
-    userEmail = "kiroris@proton.me";
-    aliases = {
-      ci = "commit";
-      co = "checkout";
-      s = "status";
-    };
-    #init.defaultBranch = "main";
-  };
+  #programs.git = {
+  #  enable = true;
+  #  userName = "kiroris";
+  #  userEmail = "kiroris@proton.me";
+  #  aliases = {
+  #    ci = "commit";
+  #    co = "checkout";
+  #    s = "status";
+  #  };
+  #  #init.defaultBranch = "main";
+  #};
 
     xdg.configFile = {
     fastfetch = {
