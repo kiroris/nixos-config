@@ -193,7 +193,7 @@
 
     # Xray daemon.
     xray = {
-      enable = true;
+      enable = false;
       settingsFile = /home/kirill/.config/xray/xray.json;
     };
 
@@ -333,6 +333,12 @@
     #};
   };
 
+### DELETE ####
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+### DELETE ###
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

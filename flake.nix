@@ -26,7 +26,7 @@
 
   };
 
-  outputs = { self, nixpkgs, nixvim, agenix, nix-index-database, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nixvim, agenix, nix-index-database, ... }@inputs: {
     nixosConfigurations =
       let
         makeNixosConfiguration = name: modules: nixpkgs.lib.nixosSystem {
@@ -43,6 +43,7 @@
 
         wisteria = makeNixosConfiguration "wisteria" [
           ./system/wisteria
+          ./home/zsh
           ./configuration.nix
         ];
 
@@ -51,13 +52,29 @@
         ];
       };
 
-#    homeConfigurations =
+    homeConfigurations =
+      let
+        makeHomeConfiguration = modules: home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            #./home
+            #./home/gui
+            #nixvim.homeManagerModules.nixvim
+            #nix-index-database.hmModules.nix-index
+          ] ++ modules;
+        };
+      in
+      {
+        "kirill@fallback-hostname" = makeHomeConfiguration [ ];
 
+        "kirill@wisteria" = makeHomeConfiguration [
+          #agenix.homeManagerModules.age
+        ];
 
-
-
-
-
-
+        "kirill@lycoris" = makeHomeConfiguration [
+          #agenix.homeManagerModules.age
+        ];
+      };
   };
 }

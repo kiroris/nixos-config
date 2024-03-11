@@ -47,14 +47,14 @@
   #};
 
   # Shell
-  programs.zsh = {
-    enable = true;
-    enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
-    syntaxHighlighting.enable = true;
-    enableCompletion = true;
-  };  
-  users.defaultUserShell = pkgs.zsh;
+  #programs.zsh = {
+  #  enable = true;
+  #  enableAutosuggestions = true;
+  #  enableSyntaxHighlighting = true;
+  #  syntaxHighlighting.enable = true;
+  #  enableCompletion = true;
+  #};  
+  #users.defaultUserShell = pkgs.zsh;
 
   ## Console
   #console = {
@@ -292,10 +292,10 @@
   btop
   cava
   acpi
-  zsh
+  #zsh
   duf
   eza
-  fzf
+  #fzf
   lf
   
 
@@ -304,8 +304,8 @@
   pkgs.wineWowPackages.stagingFull
   pkgs.home-manager
   # Zsh
-  zsh-syntax-highlighting
-  zsh-autosuggestions
+  #zsh-syntax-highlighting
+  #zsh-autosuggestions
   # Outher
   pkgs.android-udev-rules
   sway-contrib.grimshot
