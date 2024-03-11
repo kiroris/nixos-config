@@ -67,7 +67,7 @@
           modules = [
             ./home
             #./home/gui
-            nixvim.homeManagerModules.nixvim
+            #nixvim.homeManagerModules.nixvim
             #nix-index-database.hmModules.nix-index
           ] ++ modules;
         };
