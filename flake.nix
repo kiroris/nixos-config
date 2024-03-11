@@ -1,10 +1,18 @@
 {
+
+# ███╗   ██╗██╗██╗  ██╗      ██████╗ ███████╗
+# ████╗  ██║██║╚██╗██╔╝     ██╔═══██╗██╔════╝
+# ██╔██╗ ██║██║ ╚███╔╝█████╗██║   ██║███████╗
+# ██║╚██╗██║██║ ██╔██╗╚════╝██║   ██║╚════██║
+# ██║ ╚████║██║██╔╝ ██╗     ╚██████╔╝███████║
+# ╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝      ╚═════╝ ╚══════╝
+# www.asciiart.eu/text-to-ascii-art
   inputs = {
     
     # Nixpkgs
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    #nixpkgs.url = "nixpkgs/nixos-unstable";
     #nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     # Home Manager
     home-manager = {

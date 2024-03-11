@@ -7,15 +7,12 @@
 # ██║  ██║╚██████╔╝██║ ╚═╝ ██║███████╗    ██║ ╚═╝ ██║██║  ██║██║ ╚████║██║  ██║╚██████╔╝███████╗██║  ██║
 # ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
   programs.home-manager.enable = true;
-# ██╗███╗   ███╗██████╗  ██████╗ ██████╗ ████████╗███████╗
-# ██║████╗ ████║██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝
-# ██║██╔████╔██║██████╔╝██║   ██║██████╔╝   ██║   ███████╗
-# ██║██║╚██╔╝██║██╔═══╝ ██║   ██║██╔══██╗   ██║   ╚════██║
-# ██║██║ ╚═╝ ██║██║     ╚██████╔╝██║  ██║   ██║   ███████║
-# ╚═╝╚═╝     ╚═╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝
+
   imports = [
     
   ];
+
+
   home = {
     username = "kirill";
     homeDirectory = "/home/kirill";
@@ -34,6 +31,10 @@
       VISUAL = "nvim";
     };
   };
+
+  home.packages = with pkgs; [
+    fastfetch
+  ];
 
   home.pointerCursor = {
     name = "Adwaita";
@@ -54,6 +55,13 @@
       s = "status";
     };
     #init.defaultBranch = "main";
+  };
+
+    xdg.configFile = {
+    fastfetch = {
+      source = ./files/fastfetch.jsonc;
+      target = "fastfetch/config.jsonc";
+    };
   };
 
   programs.fzf = {
