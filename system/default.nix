@@ -253,6 +253,9 @@
     # Steam enable.
     steam.enable = true;
 
+    # OBS enable.
+    obs-studio.enable = true;
+
     # WireShark enable.
     wireshark.enable = true;
 
