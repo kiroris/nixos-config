@@ -4,12 +4,9 @@
     userName = "kiroris";
     userEmail = "kiroris@proton.me";
     aliases = {
-      ci = "commit";
       co = "checkout";
+      ci = "commit";
       s = "status";
     };
-    extraConfig = ''
-    init.defaultBranch = "main";
-    ''
   };
 }
