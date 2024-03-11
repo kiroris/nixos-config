@@ -47,14 +47,14 @@
   #};
 
   # Shell
-  #programs.zsh = {
+  programs.zsh = {
   #  enable = true;
-  #  enableAutosuggestions = true;
-  #  enableSyntaxHighlighting = true;
-  #  syntaxHighlighting.enable = true;
-  #  enableCompletion = true;
-  #};  
-  #users.defaultUserShell = pkgs.zsh;
+    enableAutosuggestions = true;
+ #  enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
+    enableCompletion = true;
+  };  
+  users.defaultUserShell = pkgs.zsh;
 
   ## Console
   #console = {
@@ -135,9 +135,9 @@
   #  };
   #};
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.1.1v"
-  ];
+  #nixpkgs.config.permittedInsecurePackages = [
+  #  "openssl-1.1.1v"
+  #];
   
   # Gvfs
   #services.gvfs = {
@@ -230,14 +230,14 @@
   gcc
   # Database
   pgadmin4-desktopmode
-  postgresql
+  #postgresql
   # Hosts
-  hugo
+  #hugo
   # Git 
-  git
+  #git
 
 #HACKING
-  inetutils
+  #inetutils
   radare2
   iaito
   nmap
@@ -245,9 +245,9 @@
 
 
 #ZIPS
-  unzip
-  unrar
-  p7zip
+  #unzip
+  #unrar
+  #p7zip
 
 
 #VISUAL
@@ -264,16 +264,17 @@
   firefox-wayland
   element-desktop
   gnome.nautilus
-  pavucontrol
+  #pavucontrol
   obs-studio
   winetricks
   fragments
-  qpwgraph
+  #qpwgraph
   bottles
   spotify
-  scrcpy
+  #scrcpy
   heroic
   foot
+#
   mpv
   imv
 
@@ -284,16 +285,17 @@
   tty-clock
   swayidle
   neofetch
-  htop-vim
+  #htop-vim
   cmatrix
   du-dust
   pamixer
   #light
-  btop
+  #btop
   cava
+
+#laptop
   acpi
-  #zsh
-  duf
+  #duf
   eza
   #fzf
   lf
@@ -303,28 +305,27 @@
   # NixOS
   pkgs.wineWowPackages.stagingFull
   pkgs.home-manager
-  # Zsh
   #zsh-syntax-highlighting
   #zsh-autosuggestions
   # Outher
   pkgs.android-udev-rules
   sway-contrib.grimshot
-  pkgs.cifs-utils
-  wl-clipboard
-  mesa-demos
-  libnotify
-  ntfs3g
-  libGL
-  file
+  #pkgs.cifs-utils
+  #wl-clipboard
+  #mesa-demos
+  #libnotify
+  #ntfs3g
+  #libGL
+  #file
   wine
 
 
 #OTHER
   appimage-run
-  zerotierone
-  mesa-demos
+  #zerotierone
+  #mesa-demos
   gamescope
-  steam-run
+  #steam-run
   distrobox
   qemu_full
   mangohud
@@ -336,7 +337,7 @@
   ungoogled-chromium
   librewolf
   zathura
-  xdg-utils
+  #xdg-utils
   
   #shotcut
   xray

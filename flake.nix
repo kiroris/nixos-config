@@ -43,7 +43,6 @@
 
         wisteria = makeNixosConfiguration "wisteria" [
           ./system/wisteria
-          ./home/zsh
           ./configuration.nix
         ];
 
@@ -58,7 +57,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs; };
           modules = [
-            #./home
+            ./home
             #./home/gui
             #nixvim.homeManagerModules.nixvim
             #nix-index-database.hmModules.nix-index

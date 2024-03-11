@@ -16,7 +16,7 @@
     #'';
 
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = ["nix-command" "flakes" ];
       auto-optimise-store = true;
     };
 
@@ -126,6 +126,9 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
+    #extraPackages = with pkgs; [
+    #  rocmPackages.clr.icd
+    #];
   };
 
 
@@ -169,12 +172,6 @@
     
     # ZerotierOne daemon.
     zerotierone.enable = true;
-
-    # W8 DIMA.
-    xserver = {
-      layout = "us";
-      xkbVariant = "";
-    };
 
     # Dbus daemon.
     dbus = {
@@ -242,8 +239,38 @@
 # ╚═╝     ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝
   environment.defaultPackages = [ ];
   environment.systemPackages = with pkgs; [
-    # system
+    # System.
     linuxPackages_latest.cpupower
+    home-manager
+    libnotify
+    man-pages
+    wayland
+    openssl
+    ntfs3g
+    libGL
+    #sbctl # secure boot keys.
+    glib # gsettings.
+
+    # Essential system utils.
+    cifs-utils
+    inetutils
+    p7zip
+    unzip
+    unrar
+    #tmux
+    btop
+    wget
+    file
+
+    # Non-essential system utils.
+    gnome3.adwaita-icon-theme
+    wl-clipboard
+    pavucontrol
+    xdg-utils
+    qpwgraph
+    neovim
+    duf
+    git
   ];
 
 
@@ -254,6 +281,9 @@
 # ██║     ██║  ██║╚██████╔╝╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║███████║
 # ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
   programs = {
+    # ZSH enable.
+    zsh.enable = true;
+
     # MTR enable.
     mtr.enable = true;
 
@@ -289,6 +319,10 @@
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
+    ];
+    wlr.enable = true;
+    configPackages = with pkgs; [
+      xdg-desktop-portal-wlr
     ];
     # GTK portal needed to make gtk apps happy.
     gtkUsePortal = true;
@@ -333,12 +367,6 @@
     #};
   };
 
-### DELETE ####
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-### DELETE ###
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
