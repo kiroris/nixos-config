@@ -241,14 +241,9 @@
     # System.
     linuxPackages_latest.cpupower
     home-manager
-    libnotify
     man-pages
-    wayland
     openssl
-    ntfs3g
-    libGL
     #sbctl # secure boot keys.
-    glib # gsettings.
 
     # Essential system utils.
     cifs-utils
@@ -256,19 +251,12 @@
     p7zip
     unzip
     unrar
-    #tmux
     btop
     wget
     file
 
-    # Non-essential system utils.
-    gnome3.adwaita-icon-theme
-    wl-clipboard
-    pavucontrol
-    xdg-utils
-    qpwgraph
-    neovim
-    duf
+    # Required packages.
+    nvim
     git
   ];
 

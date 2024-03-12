@@ -187,7 +187,7 @@
   # PostgreSQL
   #services.postgresql.enable = true;
 
-  environment.variables.EDITOR = "nvim";
+  #environment.variables.EDITOR = "nvim";
 
   # xray
   #services.xray = {
@@ -281,14 +281,14 @@
 
 #CLI UTILS
   shadowsocks-rust
-  playerctl
+  #playerctl
   tty-clock
   swayidle
   neofetch
   #htop-vim
   cmatrix
   du-dust
-  pamixer
+  #pamixer
   #light
   #btop
   cava
@@ -340,7 +340,7 @@
   #xdg-utils
   
   #shotcut
-  xray
+  #xray
   libsForQt5.kdenlive
   anytype
   fluffychat
@@ -355,6 +355,25 @@
   transmission
   #vmware-workstation
   podman-compose
+
+  libnotify
+  wayland
+
+
+  gnome3.adwaita-icon-theme
+  wl-clipboard
+  pavucontrol
+  playerctl
+  xdg-utils
+  qpwgraph
+  pamixer
+  neovim
+  duf
+  git
+
+  ntfs3g
+  libGL
+  glib # gsettings.
 
   ];
 
