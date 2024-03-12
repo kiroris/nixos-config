@@ -47,14 +47,14 @@
   #};
 
   # Shell
-  programs.zsh = {
-  #  enable = true;
-    enableAutosuggestions = true;
- #  enableSyntaxHighlighting = true;
-    syntaxHighlighting.enable = true;
-    enableCompletion = true;
-  };  
-  users.defaultUserShell = pkgs.zsh;
+  #programs.zsh = {
+  ##  enable = true;
+  #  enableAutosuggestions = true;
+ ##  enableSyntaxHighlighting = true;
+  #  syntaxHighlighting.enable = true;
+  #  enableCompletion = true;
+  #};  
+  #users.defaultUserShell = pkgs.zsh;
 
   ## Console
   #console = {

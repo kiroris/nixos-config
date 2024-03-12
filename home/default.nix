@@ -10,6 +10,7 @@
   imports = [
     ./git
     ./zsh
+    ./starship
     #./nixvim
   ];
 
@@ -33,7 +34,7 @@
   };
 
   home.packages = with pkgs; [
-    fastfetch
+    #asdasd
   ];
 
   home.pointerCursor = {
@@ -47,12 +48,6 @@
 
 
 
-    xdg.configFile = {
-    fastfetch = {
-      source = ./files/fastfetch.jsonc;
-      target = "fastfetch/config.jsonc";
-    };
-  };
 
   programs.fzf = {
     enable = true;
