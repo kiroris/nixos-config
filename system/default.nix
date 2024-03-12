@@ -256,7 +256,7 @@
     file
 
     # Required packages.
-    nvim
+    neovim
     git
   ];
 
